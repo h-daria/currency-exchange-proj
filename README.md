@@ -3,8 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
 
 ##Before running the app
+Create your own API key using https://app.exchangerate-api.com/.
 
-Find .env-example file and copy it. Rename it to .env and enter https://app.exchangerate-api.com/ API key to make the requests work properly.
+After you've successfully created API key find env-example.ts file and copy it. Rename it to env.ts, uncomment constants and enter API key to make the requests work properly.
 
 ## Development server
 
