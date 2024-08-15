@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
 
+##Before running the app
+
+Find .env-example file and copy it. Rename it to .env and enter https://app.exchangerate-api.com/ API key to make the requests work properly.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
