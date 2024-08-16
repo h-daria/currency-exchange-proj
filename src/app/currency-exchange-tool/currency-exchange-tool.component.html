@@ -1,0 +1,75 @@
+<div class="toolbox">
+  <h1>Convert currency</h1>
+
+  <div class="currencies-container">
+    <div>
+      <span> From </span>
+      <mat-form-field class="mat-form-field" appearance="outline">
+        <mat-label>{{ selectedCurrencies.currencyBase.code }}</mat-label>
+        <input
+          [ngModel]="selectedCurrencies.currencyBase.value"
+          (input)="
+            onConvertCurrency($event, selectedCurrencies.currencyConvertTo)
+          "
+          matInput
+          type="number"
+          placeholder="Currency"
+        />
+        <button
+          class="icon-btn"
+          mat-icon-button
+          matSuffix
+          [matMenuTriggerFor]="baseSelector"
+        >
+          <mat-icon class="material-symbols-outlined2">
+            keyboard_arrow_down
+          </mat-icon>
+        </button>
+        <mat-menu #baseSelector="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let code of currencyCodes"
+            (click)="selectCurrency(code, selectedCurrencies.currencyBase)"
+          >
+            {{ code }}
+          </button>
+        </mat-menu>
+      </mat-form-field>
+    </div>
+
+    <mat-icon class="material-symbols-outlined"> sync_alt </mat-icon>
+
+    <div>
+      <span> To </span>
+      <mat-form-field class="mat-form-field" appearance="outline">
+        <mat-label>{{ selectedCurrencies.currencyConvertTo.code }}</mat-label>
+        <input
+          [ngModel]="selectedCurrencies.currencyConvertTo.value"
+          (input)="onConvertCurrency($event, selectedCurrencies.currencyBase)"
+          matInput
+          type="number"
+          placeholder="Currency"
+        />
+        <button
+          class="icon-btn"
+          mat-icon-button
+          matSuffix
+          [matMenuTriggerFor]="convertToSelector"
+        >
+          <mat-icon class="material-symbols-outlined2">
+            keyboard_arrow_down
+          </mat-icon>
+        </button>
+        <mat-menu #convertToSelector="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let code of currencyCodes"
+            (click)="selectCurrency(code, selectedCurrencies.currencyConvertTo)"
+          >
+            {{ code }}
+          </button>
+        </mat-menu>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
