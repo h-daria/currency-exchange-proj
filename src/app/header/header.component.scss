@@ -1,0 +1,46 @@
+.container {
+  height: 8%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  font-weight: 300;
+}
+
+.currencies-container {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  background-color: rgba($color: #ffffff, $alpha: 0.2);
+  border-radius: 15px;
+}
+
+.currency-section {
+  width: 50%;
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  border-right: 1px solid #1d0038;
+
+  img {
+    width: 25%;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+  }
+}
+
+.currency-section:last-of-type {
+  border: none;
+}
+
+.currency-rate {
+  margin-left: 1.5rem;
+}

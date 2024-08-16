@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="logo">
+    <mat-icon class="material-symbols-outlined">
+      keyboard_double_arrow_right
+    </mat-icon>
+    <h1>Easy Convert</h1>
+  </div>
+
+  <div class="currencies-container">
+    <div class="currency-section" *ngFor="let currency of currencies">
+      <img [src]="currency.imageUrl" [alt]="currency.code" />
+      <p>{{ currency.code }}</p>
+      <p class="currency-rate">
+        {{ currency.value | currency : currency.code : "symbol" : "2.2-2" }}
+      </p>
+    </div>
+  </div>
+</div>
