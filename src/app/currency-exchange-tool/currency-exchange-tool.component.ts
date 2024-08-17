@@ -47,7 +47,7 @@ export class CurrencyExchangeToolComponent implements OnInit {
 
   currencyConvertToRate: string = '';
 
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  destroy$: Subject<void> = new Subject<void>();
 
   constructor(private currenciesApiService: CurrenciesApiService) {}
 
@@ -56,8 +56,8 @@ export class CurrencyExchangeToolComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   selectCurrency(currencyCode: string, currency: CurrencyData) {
