@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  CurrenciesDto,
+  ConversionRates,
   CurrencyData,
 } from '../currency-interfaces';
 import { Subject, takeUntil } from 'rxjs';
@@ -32,7 +32,6 @@ interface CurrenciesToConvert {
   styleUrls: ['./currency-exchange-tool.component.scss'],
 })
 export class CurrencyExchangeToolComponent implements OnInit {
-  
   currencyCodes: string[] = ['UAH', 'USD', 'EUR'];
   selectedCurrencies: CurrenciesToConvert = {
     currencyBase: {
@@ -84,14 +83,9 @@ export class CurrencyExchangeToolComponent implements OnInit {
     this.currenciesApiService
       .getCurrencyData(this.selectedCurrencies.currencyBase.code)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        const currencyJSON = JSON.stringify(data);
-        const currenciesData: CurrenciesDto = JSON.parse(currencyJSON);
-
+      .subscribe((data: ConversionRates) => {
         this.currencyConvertToRate =
-          currenciesData.conversion_rates[
-            this.selectedCurrencies.currencyConvertTo.code
-          ].toString();
+          data[this.selectedCurrencies.currencyConvertTo.code].toString();
 
         this.selectedCurrencies.currencyBase.value = '';
         this.selectedCurrencies.currencyConvertTo.value = '';

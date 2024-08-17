@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { CurrenciesDto, CurrencyData } from '../currency-interfaces';
+import { ConversionRates, CurrencyData } from '../currency-interfaces';
 import { Subject, takeUntil } from 'rxjs';
 import { CurrenciesApiService } from '../services/currencies-api.service';
 import { CurrencyPipe } from '@angular/common';
@@ -46,12 +46,9 @@ export class HeaderComponent implements OnInit {
     this.currenciesApiService
       .getCurrencyData(this.baseCurrency)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        const currencyJSON = JSON.stringify(data);
-        const currenciesData: CurrenciesDto = JSON.parse(currencyJSON);
-
+      .subscribe((data: ConversionRates) => {
         this.currencies.forEach((item: CurrencyData) => {
-          item.value = (1 / currenciesData.conversion_rates[item.code]).toString();
+          item.value = (1 / data[item.code]).toString();
         });
       });
   }

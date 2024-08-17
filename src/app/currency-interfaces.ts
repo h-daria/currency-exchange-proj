@@ -7,9 +7,3 @@ export interface CurrencyData {
 export interface ConversionRates {
   [currencyCode: string]: number;
 }
-
-export interface CurrenciesDto {
-  base_code: string;
-  conversion_rates: ConversionRates;
-  result: boolean;
-}
